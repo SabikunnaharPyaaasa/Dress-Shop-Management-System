@@ -1,0 +1,100 @@
+<inventory>
+    <item>
+        <name>Shirt (Full)</name>
+        <cost>$50.00</cost>
+        <recieved>200</recieved>
+        <sold>120</sold>
+        <available>80</available>
+    </item>
+    <item>
+        <name>Shirt (Half)</name>
+        <cost>$42.00</cost>
+        <recieved>180</recieved>
+        <sold>130</sold>
+        <available>50</available>
+    </item>
+    <item>
+        <name>T-Shirt</name>
+        <cost>$30.00</cost>
+        <recieved>500</recieved>
+        <sold>320</sold>
+        <available>120</available>
+    </item>
+    <item>
+        <name>Polo Shirt</name>
+        <cost>$45.00</cost>
+        <recieved>300</recieved>
+        <sold>200</sold>
+        <available>100</available>
+    </item>
+    <item>
+        <name>Jeans</name>
+        <cost>$55.00</cost>
+        <recieved>350</recieved>
+        <sold>300</sold>
+        <available>50</available>
+    </item>
+    <item>
+        <name>Pant</name>
+        <cost>$40.00</cost>
+        <recieved>400</recieved>
+        <sold>100</sold>
+        <available>300</available>
+    </item>
+    <item>
+        <name>Jogger</name>
+        <cost>$40.00</cost>
+        <recieved>200</recieved>
+        <sold>130</sold>
+        <available>70</available>
+    </item>
+    <item>
+        <name>Jacket</name>
+        <cost>$100.00</cost>
+        <recieved>150</recieved>
+        <sold>60</sold>
+        <available>90</available>
+    </item>
+    <item>
+        <name>SweatShirt</name>
+        <cost>$48.00</cost>
+        <recieved>300</recieved>
+        <sold>200</sold>
+        <available>100</available>
+    </item>
+    <item>
+        <name>Blazer</name>
+        <cost>$120.00</cost>
+        <recieved>100</recieved>
+        <sold>90</sold>
+        <available>10</available>
+    </item>
+    <item>
+        <name>Hat (Men)</name>
+        <cost>$20.00</cost>
+        <recieved>100</recieved>
+        <sold>20</sold>
+        <available>80</available>
+    </item>
+    <item>
+        <name>Top (Women)</name>
+        <cost>$55.00</cost>
+        <recieved>200</recieved>
+        <sold>130</sold>
+        <available>70</available>
+    </item>
+    <item>
+        <name>Top (Long)</name>
+        <cost>$65.00</cost>
+        <recieved>400</recieved>
+        <sold>50</sold>
+        <available>350</available>
+    </item>
+    <item>
+        <name>Jeans (Women)</name>
+        <cost>$70.00</cost>
+        <recieved>100</recieved>
+        <sold>80</sold>
+        <available>20</available>
+    </item>
+</inventory>

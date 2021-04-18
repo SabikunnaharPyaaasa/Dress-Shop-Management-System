@@ -2,8 +2,8 @@
 	require_once('../../php/session_header.php');
 	require_once('../../service/product_service.php');
 
-     $id =$_GET['id'];
-     $product_details= getByProductID($id);
+     $product_id =$_GET['id'];
+     $product_details= getByProductID($product_id);
 ?>
 
 
@@ -25,7 +25,8 @@
                 <h1><b>Product Name:</b></h1>
                 <h2><p><?=$product_details['product_name']?></p></h2>
                 <p><b>Price:</b>$<?=$product_details['product_price']?></p>
-                <input type="button" value="Buy Now">
+                <a href="order_place.php?p_id=<?=$product_id?>##">
+                <input type="button" value="Buy Now"></a>
               </div>
 
               <div class="product_details">

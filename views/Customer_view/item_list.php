@@ -27,11 +27,13 @@
         </a>   
            <div class="img-desc">
             <p><b>Price:</b>$<?=$product[$i]['product_price']?></p>
+            
+            <a href="add_to_cart.php?id=<?=$product[$i]['id']?>##"> 
             <button>
-            <a href="add_to_cart.php?#<?=$product[$i]['id']?>##"> 
             Add to Cart
-            </a>  
             </button>
+            </a>  
+            
         </div>
     </div>
     </tr>

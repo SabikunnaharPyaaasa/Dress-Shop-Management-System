@@ -24,6 +24,7 @@
 
 			if($status){
 				$_SESSION['username'] = $username;
+				$_SESSION['user_id'] = $ass['id'];;
 				if($abc =='Customer')
 				{
 				header('location: ../views/Customer_view/Customer_home.php');

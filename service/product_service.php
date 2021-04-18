@@ -1,19 +1,6 @@
 <?php
 require_once('userService.php');
-// $host 	= "127.0.0.1";
-// $dbuser = "root";
-// $dbpass	= "";
-// $dbname	= "shop";
 
-// function dbConnection(){
-
-//     global $host;
-//     global $dbuser;
-//     global $dbpass;
-//     global $dbname;
-
-//     return $conn = mysqli_connect($host, $dbuser, $dbpass, $dbname);
-// }
 
 function getAllProduct(){
     $conn = dbConnection();
@@ -60,5 +47,23 @@ function complainDelete($complain_id){
         return false;
     }
 }
+
+// create purchased order
+
+function insertOrderPlace($purchase){
+    $conn = dbConnection();
+
+    if(!$conn){
+        echo "DB connection error";
+    }
+   
+    $sql = "insert into purchase_history values('', '{$purchase['product_id']}', '{$purchase['order_from']}', '{$purchase['user_id']}', '{$purchase['order_date']}', '{$purchase['customer_name']}', '{$purchase['contact_number']}', '{$purchase['address']}')";		
+    if(mysqli_query($conn, $sql)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 ?>

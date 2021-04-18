@@ -16,10 +16,10 @@
 </head>
 <body>
 <script type="text/javascript" src="../Asset/JS/register.js"></script>
-	<form action="../php/regCheck.php" onsubmit=return validation() method="post">
+	<form id="form" action="../php/regCheck.php" onsubmit="validation()" method="post">
 		<fieldset>
 			<legend align="center" style="font-size:40px">SignUp</legend>
-			<table align="center" height="500" weight="560" bgcolor=#90949c>
+			<table align="center" height="500" weight="560" bgcolor=pink>
 			    <tr>
 					<td>Name</td>
 					<td><input type="text" id="name" name="name" size="40" onkeyup="nameRemover()" onblur="nameEmpty()" ></td>
@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 				<td></td>
-				<td><i id="emailMsg" style="color:red;font-size: 10px; white-space: pre;"></i></td>
+				<td><i id="emailMsg" style="color:red;font-size: 15px; white-space: pre;"></i></td>
 				</tr>
 				<tr>
 				<tr>
@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 				<td></td>
-				<td><i id="usernameMsg" style="color:white;font-size: 10px; white-space: pre;"></i></td>
+				<td><i id="usernameMsg" style="color:white;font-size: 15px; white-space: pre;"></i></td>
 				</tr>
 				<tr>
 				<td>Gender</td>
@@ -115,7 +115,7 @@
 				
 				<tr>
 					<td></td>
-					<td><input type="submit" name="submit" value="Submit"></td>
+					<td><input type="submit" name="submit" value="Submit" ></td>
 				</tr>
 			</table>
 		</fieldset>

@@ -70,7 +70,7 @@
               </div>
               <div class="view_complain"><?=$complain[$i]['description']?>
               </div>
-              <div class="view_complain"><a href="../../php/complainCheck.php?id=<?=$complain[$i]['id']?>"><input type="button" value="Delete"  onclick="return confirm('Are you want to delete<?=$$complain[$i]['id'];?>')"></a>
+              <div class="view_complain"><a href="../../php/complainCheck.php?id=<?=$complain[$i]['id']?>"><input type="button" value="Delete"  onclick="alert('Are you want to delete<?=$$complain[$i]['id'];?>')"></a>
               </div>
 		    </div>
 		<?php }?>

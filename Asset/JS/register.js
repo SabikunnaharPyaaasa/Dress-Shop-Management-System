@@ -1,14 +1,16 @@
 "use strict"
+var namevalid = false;
+var emailvalid = false;
+var gendervalid = false;
+var pconvalid = false;
+var unamevalid = false;
+var datevalid = false;
+var passwordvalid = false;
+var utypevalid = false;
+var addvalid = false;
+var contactvalid = false;
 
-window.nvalid = false;
-window.evalid = false;
-window.gvalid = false;
-window.pconvalid = false;
-window.uvalid = false;
-window.dvalid = false;
-window.pvalid = false;
-addvalid = false;
-window.contactvalid = false;
+
 
 var i;
 
@@ -16,15 +18,25 @@ var i;
 function nameEmpty() {
     var name = document.getElementById("name").value;
     var lent = name.length;
+    var correct_way = /^[A-Za-z]+$/;
 
     if (name == "") {
         document.getElementById("nameMsg").innerHTML = "*field can't be empty!";
 
-        window.nvalid = false;
+        namevalid = false;
     }
-    if (!isNaN(name)) {
+    if (name.length <= 3) {
+        document.getElementById("nameMsg").innerHTML = "*Name should be greater than 3 character!";
+
+        namevalid = false;
+    } else if (!isNaN(name)) {
         document.getElementById("nameMsg").innerHTML = "*Only Characters are allowed!";
-        window.nvalid = false;
+        namevalid = false;
+    } else if (name.match(correct_way)) {
+        document.getElementById("nameMsg").innerHTML = "*Name format is not valid!";
+        namevalid = true;
+    } else {
+        namevalid = false;
     }
 
 
@@ -39,12 +51,15 @@ function nameRemover() {
 
 function contactEmpty() {
     var contact_number = document.getElementById("contact_number").value;
-    var lent = contact_number.length;
     if (contact_number == "") {
         document.getElementById("contactMsg").innerHTML = "contact number should not be empty!";
-        window.contactvalid = false;
+        contactvalid = false;
+    }
+    if (contact_number.length != 11) {
+        document.getElementById("contactMsg").innerHTML = "contact number should be 11 digit!";
+        contactvalid = false;
     } else {
-        window.contactvalid = true;
+        contactvalid = true;
     }
 }
 
@@ -62,11 +77,17 @@ function emailEmpty() {
         'check_email=' + window.encodeURIComponent('ON') +
         '&emailId=' + window.encodeURIComponent(email);
     let xhttp = new XMLHttpRequest();
-    var pos = email.search("@");
-    var pos1 = email.search(".com");
+
     if (email == "") {
         document.getElementById("emailMsg").innerHTML = "  *field can't be empty!";
-        window.evalid = false;
+        emailvalid = false;
+    } else if (email.indexOf('@') <= 0) {
+
+        document.getElementById("emailMsg").innerHTML = "  *Invalid @ format!";
+        emailvalid = false;
+    } else if (email.charAt(email.length - 4) != '.') {
+        document.getElementById("emailMsg").innerHTML = "  *Invalid .(dot) position!";
+        emailvalid = false;
     } else if (email != "") {
 
         xhttp.open('POST', '../php/regCheck.php', true);
@@ -76,17 +97,14 @@ function emailEmpty() {
             if (this.readyState == 4 && this.status == 200) {
 
                 document.getElementById("emailMsg").innerHTML = this.responseText;
-
-
+            } else {
+                emailvalid = true;
             }
         }
 
-        window.evalid = false;
-    } else if (pos == -1 || pos1 == -1 || pos1 < pos) {
-        document.getElementById("emailMsg").innerHTML = "  *invalid email! must be like (sample@example.com)";
-        window.evalid = false;
+        emailvalid = false;
     } else {
-        window.evalid = true;
+        emailvalid = true;
     }
 }
 
@@ -107,7 +125,7 @@ function unameEmpty() {
     if (uname == "") {
         document.getElementById("usernameMsg").innerHTML = "  *field can't be empty!";
 
-        window.uvalid = false;
+        unamevalid = false;
     } else if (uname != "") {
         xhttp.open('POST', '../php/regCheck.php', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -121,7 +139,7 @@ function unameEmpty() {
             }
         }
     } else {
-        window.uvalid = true;
+        unamevalid = true;
     }
 }
 
@@ -136,14 +154,14 @@ function unameRemover() {
 
 function genderEmpty() {
     if (document.getElementById("Male").checked) {
-        window.gvalid = true;
+        gendervalid = true;
     } else if (document.getElementById("Female").checked) {
-        window.gvalid = true;
+        gendervalid = true;
     } else if (document.getElementById("Other").checked) {
-        window.gvalid = true;
+        gendervalid = true;
     } else {
         document.getElementById("genderMsg").innerHTML = "  *please choose a gender!";
-        window.gvalid = false;
+        gendervalid = false;
 
     }
 }
@@ -160,9 +178,9 @@ function dobEmpty() {
     if (date == "") {
         document.getElementById("dobMsg").innerHTML = "  *field can't be empty!";
 
-        window.dvalid = false;
+        datevalid = false;
     } else {
-        window.dvalid = true;
+        datevalid = true;
     }
 
 }
@@ -179,9 +197,9 @@ function addEmpty() {
     if (address == "") {
         document.getElementById("addMsg").innerHTML = "  *field can't be empty!";
 
-        window.addvalid = false;
+        addvalid = false;
     } else {
-        window.addvalid = true;
+        addvalid = true;
     }
 
 }
@@ -197,10 +215,10 @@ function usertypeEmpty() {
 
     if (userType == "") {
         document.getElementById("utMsg").innerHTML = "*please choose at least one.";
-        window.gvalid = false;
+        utypevalid = false;
 
     } else {
-        window.gvalid = true;
+        utypevalid = true;
     }
 }
 
@@ -216,8 +234,7 @@ function PEmpty() {
         document.getElementById("passMsg").innerHTML = "*password field can't be empty!";
         window.pvalid = false;
 
-    }
-    if ((plength < 6) || (plength > 8)) {
+    } else if ((plength < 6) || (plength > 8)) {
         document.getElementById("passMsg").innerHTML = "*password field should between 6 to 8 !";
         window.pvalid = false;
 
@@ -238,16 +255,16 @@ function PconEmpty() {
 
     if (conpassword == "") {
         document.getElementById("cpassMsg").innerHTML = "*confirm password field can't be empty!";
-        window.pconvalid = false;
+        passwordvalid = false;
 
     }
 
     if (conpassword != password) {
         document.getElementById("cpassMsg").innerHTML = "*password and confirmpassword is not maching!";
-        window.pconvalid = false;
+        passwordvalid = false;
 
     } else {
-        window.pconvalid = true;
+        passwordvalid = true;
 
     }
 }
@@ -256,9 +273,11 @@ function pconRemover() {
     document.getElementById("cpassMsg").innerHTML = "";
 }
 
+
+
 function validation() {
-    if (window.nvalid == true && window.evalid == true && window.gvalid == true && window.pconvalid == true && window.uvalid == true &&
-        window.dvalid == true && window.pvalid == true && window.contactvalid == true && addvalid == true) {
+    if (namevalid == true && emailvalid == true && gendervalid == true && pconvalid == true && unamevalid == true &&
+        datevalid == true && passwordvalid == true && utypevalid == true && addvalid == true && contactvalid == true) {
         return true;
     } else {
         return false;

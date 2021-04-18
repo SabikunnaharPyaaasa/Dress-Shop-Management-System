@@ -58,28 +58,33 @@
 			
 			header('location: ../views/register.php?error=null_value');
 		}
-		elseif(strlen($password)<6 && strlen($password)>10)
+		elseif(strlen($password)<6 || strlen($password)>10)
 		{
 			echo "Password should be between 6 to 10 !!!";
+			header('location: ../views/register.php?error=password not valid');
 		}
 
 		elseif (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
 			echo "Only letters and white space allowed";
+			header('location: ../views/register.php?error=use character');
 		  }
 
 		elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			echo"Invalid email format";
+			header('location: ../views/register.php?error=invalid_email');
 		  }
 
 
 		elseif($email==$exist_email['email'])
 		{
 			echo "email already exist";
+			header('location: ../views/register.php?error=email exist');
 		}
 
 		elseif($username==$exist_username['username'])
 		{
 			echo "Username already exist";
+			header('location: ../views/register.php?error=user name exist');
 		}
 
 
@@ -88,12 +93,14 @@
 		elseif($password!=$confirm_password)
 		{
             echo "password and confirm password is not matching!";
+			header('location: ../views/register.php?error=password not matching');
 		}
 
 
 		elseif(strlen($contact_number)!=11)
 		{
 			echo "please enter valid mobile number";
+			header('location: ../views/register.php?error=invalid contact');
 			
 		}
 
@@ -101,12 +108,14 @@
 		elseif(!is_numeric($contact_number))
 		{
 			echo "Number should be numeric value";
+			header('location: ../views/register.php?error=number not numeric');
 		}
 
 
 		elseif(is_numeric($name))
 		{
 			echo "Name cannot be numeric value";
+			header('location: ../views/register.php?error=name cannot be numeric');
 		}
 
 
